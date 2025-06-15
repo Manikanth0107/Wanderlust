@@ -9,7 +9,7 @@ To access the application, please use the following credentials:
 ## Application URL
 (https://wanderlust-tolp.onrender.com/listings)
 
-- email: mani@gmail.com
+- username: mani
 - password: mani123
 
 ---
