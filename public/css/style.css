@@ -29,6 +29,23 @@ body {
   color: black !important;
 }
 
+/* style.css */
+
+.navbar {
+  /* REMOVE the hard height */
+  /* height: 5rem;   */
+
+  /* keep the initial size but allow it to stretch */
+  min-height: 5rem;
+}
+
+/* purely cosmetic – makes the opened menu look like a sheet */
+@media (max-width: 767.98px) {
+  .navbar-collapse {
+    background: #fff;
+  }
+}
+
 /* Footer */
 
 .f-info-links a {
@@ -113,7 +130,24 @@ footer {
 
 .edit-btn {
   background-color: #fe424d !important;
-  border: none !important;
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.edit-btn:hover {
+  background-color: #e6373f !important;
+  color: white !important;
+  text-decoration: none;
+}
+
+.delete-btn:hover {
+  background-color: #0e0d0d;
+  color: black;
 }
 
 /* show page */
@@ -124,11 +158,88 @@ footer {
 
 .btns {
   display: flex;
+  gap: 15px;
+  margin: 25px 0;
+  align-items: center;
 }
 
 .show-card {
   padding-left: 0;
   padding-right: 0;
+}
+
+/* Delete button styling */
+.btns form button {
+  background-color: #050505;
+  border: none;
+  color: #e6373f;
+  padding: 8px 20px;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.btns form button:hover {
+  background-color: #0e0d0d;
+  color: white;
+}
+
+/* Desktop specific adjustments */
+@media (min-width: 992px) {
+  .btns {
+    justify-content: flex-start;
+    margin-left: 0;
+  }
+
+  .edit-btn,
+  .btns form button {
+    min-width: 80px;
+    padding: 10px 24px;
+  }
+}
+
+/* Mobile-first button improvements */
+.btns {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 576px) {
+  .btns {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btns .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+/* Review cards */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 1rem;
+  }
+
+  .show-card {
+    margin: 0;
+  }
+}
+
+/* Map container */
+.map-container {
+  margin: 20px 0;
+}
+
+@media (max-width: 576px) {
+  .map-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
 }
 
 /* map */
