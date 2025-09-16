@@ -248,3 +248,35 @@ footer {
   height: 400px;
   width: 80vh;
 }
+
+#filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.filter {
+  text-align: center;
+  margin-right: 2rem;
+  margin-top: 1rem;
+  opacity: 0.7;
+  transition: all 0.2s ease-in-out;
+  padding-bottom: 0.25rem;
+}
+
+.filter:hover {
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.filter p {
+  font-size: 0.8rem;
+}
+
+a.filter {
+  text-decoration: none;
+  color: #222222;
+}

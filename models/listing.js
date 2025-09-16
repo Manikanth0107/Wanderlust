@@ -36,6 +36,20 @@ const listingSchema = new Schema({
       required: true,
     },
   },
+  category: {
+    type: String,
+    enum: [
+      "Trending",
+      "Rooms",
+      "Iconic Cities",
+      "Mountains",
+      "Castles",
+      "Amazing Pool",
+      "Camping",
+      "Farms",
+      "Arctic",
+    ],
+  },
 });
 
 // listingSchema.post("findOneAndUpdate", async (listing) => {

@@ -21,6 +21,13 @@ router.route("/").get(wrapAsync(listingController.index)).post(
 //Create new  Route
 router.get("/new", isLoggedIn, listingController.renderNewForm);
 
+
+//Category Route
+router.get(
+  "/categories/:category",
+  wrapAsync(listingController.showByCategory)
+);
+
 router
   .route("/:id")
   .get(wrapAsync(listingController.showListing))

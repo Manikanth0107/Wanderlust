@@ -4,8 +4,20 @@ const mapToken = process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
 module.exports.index = async (req, res) => {
-  const allListings = await Listing.find({});
-  res.render("listings/index.ejs", { allListings });
+  const { country } = req.query;
+  if (country) {
+    const regex = new RegExp(country, "i");
+    const allListings = await Listing.find({ country: { $regex: regex } });
+    if (allListings.length > 0) {
+      res.render("listings/index.ejs", { allListings, country });
+    } else {
+      req.flash("error", "No listings found for this country!");
+      res.redirect("/listings");
+    }
+  } else {
+    const allListings = await Listing.find({});
+    res.render("listings/index.ejs", { allListings, country: "" });
+  }
 };
 
 module.exports.renderNewForm = (req, res) => {
@@ -80,4 +92,15 @@ module.exports.destroyListing = async (req, res) => {
   console.log(deletedListing);
   req.flash("success", " Listing Deleted!");
   res.redirect("/listings");
+};
+
+module.exports.showByCategory = async (req, res) => {
+  const { category } = req.params;
+  const allListings = await Listing.find({ category });
+  if (allListings.length > 0) {
+    res.render("listings/index.ejs", { allListings });
+  } else {
+    req.flash("error", "No listings found for this category!");
+    res.redirect("/listings");
+  }
 };
